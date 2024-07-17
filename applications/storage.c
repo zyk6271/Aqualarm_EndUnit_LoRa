@@ -17,7 +17,7 @@
 #define DBG_LVL DBG_LOG
 #include <rtdbg.h>
 
-static uint32_t Main_ID = 0;
+static uint32_t dest_addr = 0;
 static const struct fal_partition *part_dev = NULL;
 
 void StorageInit(void)
@@ -29,22 +29,22 @@ void StorageInit(void)
         LOG_D("Probed a flash partition | %s | flash_dev: %s | offset: %ld | len: %d |.\n",
                 part_dev->name, part_dev->flash_name, part_dev->offset, part_dev->len);
     }
-    fal_partition_read(part_dev, 0, &Main_ID, 4);
-    if(Main_ID == 0 || Main_ID == 0xFFFFFFFF)
+    fal_partition_read(part_dev, 0, &dest_addr, 4);
+    if(dest_addr == 0 || dest_addr == 0xFFFFFFFF)
     {
-        Main_ID = 10000001;
+        dest_addr = 10000001;
     }
-    LOG_D("Main ID %d\r\n",Main_ID);
+    LOG_D("dest_addr %d\r\n",dest_addr);
 }
 
 void Storage_Main_Write(uint32_t device_id)
 {
-    Main_ID = device_id;
-    fal_partition_erase(part_dev, 0, 8);
-    fal_partition_write(part_dev, 0, &device_id, 8);
+    dest_addr = device_id;
+    fal_partition_erase(part_dev, 0, 4);
+    fal_partition_write(part_dev, 0, &device_id, 4);
 }
 
 uint32_t Storage_Main_Read(void)
 {
-    return Main_ID;
+    return dest_addr;
 }
