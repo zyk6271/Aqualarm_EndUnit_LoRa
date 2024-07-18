@@ -31,7 +31,7 @@ static void radio_frame_mainunit_parse_learn(rx_format *rx_frame)
     case 0://learn ack
         send_value = 1;
         tx_frame.msg_ack = RT_TRUE;
-        tx_frame.msg_type = MSG_CONFIRMED_UPLINK;
+        tx_frame.msg_type = MSG_UNCONFIRMED_UPLINK;
         tx_frame.dest_addr = rx_frame->source_addr;
         tx_frame.source_addr = get_local_address();
         tx_frame.command = LEARN_DEVICE_CMD;
