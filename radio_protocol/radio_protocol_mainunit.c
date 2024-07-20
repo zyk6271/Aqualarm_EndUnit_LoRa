@@ -54,7 +54,7 @@ static void radio_frame_mainunit_parse_learn(rx_format *rx_frame)
 
 static void radio_frame_mainunit_parse_valve(rx_format *rx_frame)
 {
-    uint32_t value = rx_frame->rx_data[2];
+    uint8_t value = rx_frame->rx_data[2];
 
     if(rx_frame->rssi >= -100 && rx_frame->snr >= 0)
     {
@@ -65,7 +65,8 @@ static void radio_frame_mainunit_parse_valve(rx_format *rx_frame)
 
 static void radio_frame_mainunit_parse_warn(rx_format *rx_frame)
 {
-    switch(rx_frame->rx_data[2])//subcommand
+    uint8_t sub_command = rx_frame->rx_data[2];
+    switch(sub_command)//subcommand
     {
     case 0:
         if(rx_frame->rx_data[3])//data
