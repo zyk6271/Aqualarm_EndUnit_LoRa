@@ -667,7 +667,7 @@ rt_event_t rf_event = RT_NULL;
 rt_thread_t rf_thread = RT_NULL;
 
 #define RF_IRQ_Event      1<<0
-#
+
 /* Private  functions ---------------------------------------------------------*/
 /**
   * @brief  lora_radio_thread_entry
