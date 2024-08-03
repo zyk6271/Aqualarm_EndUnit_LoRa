@@ -44,7 +44,6 @@ static void radio_frame_mainunit_parse_learn(rx_format *rx_frame)
     case 1://learn done
         Storage_Main_Write(rx_frame->source_addr);
         Led_LearnSuceess();
-
         LOG_I("radio_frame_mainunit_parse_learn done %d\r\n",rx_frame->source_addr);
         break;
     default:

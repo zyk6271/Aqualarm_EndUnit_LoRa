@@ -67,14 +67,27 @@ void once_heart_timer_callback(void *parameter)
     RF_HeartWithMain();
 }
 
-void heart_init(void)
+void rng_hw_init(void)
 {
     rng_handle.Instance = RNG;
     if (HAL_RNG_Init(&rng_handle) != HAL_OK)
     {
         Error_Handler();
     }
+}
 
+void rng_hw_deinit(void)
+{
+    rng_handle.Instance = RNG;
+    if (HAL_RNG_DeInit(&rng_handle) != HAL_OK)
+    {
+        Error_Handler();
+    }
+}
+
+void heart_init(void)
+{
+    rng_hw_init();
     rt_lptimer_init(&heart_timer, "heart_timer", heart_timer_callback, RT_NULL,5*60*1000, RT_TIMER_FLAG_ONE_SHOT | RT_TIMER_FLAG_SOFT_TIMER);
     rt_lptimer_init(&once_heart_timer, "once_heart_timer", once_heart_timer_callback, RT_NULL,30*1000, RT_TIMER_FLAG_ONE_SHOT | RT_TIMER_FLAG_SOFT_TIMER);
     rt_lptimer_start(&once_heart_timer);
