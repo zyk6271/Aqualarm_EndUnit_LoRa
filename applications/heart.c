@@ -57,8 +57,8 @@ void Stop_Heart_Timer(void)
 void period_heart_start(void)
 {
     uint32_t ramdom_sec = random_second_get(30,270) * 1000;
-    rt_lptimer_control(&once_heart_timer, RT_TIMER_CTRL_SET_TIME, &ramdom_sec);
-    rt_lptimer_start(&once_heart_timer);
+    rt_lptimer_control(&heart_timer, RT_TIMER_CTRL_SET_TIME, &ramdom_sec);
+    rt_lptimer_start(&heart_timer);
 }
 
 void once_heart_timer_callback(void *parameter)
