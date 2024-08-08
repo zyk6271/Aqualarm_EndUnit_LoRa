@@ -26,7 +26,7 @@ void RTC_Timer_Entry(void *parameter)
         else
         {
             rtc_cnt = 0;
-            period_heart_start();
+            heart_period_start();
         }
         rt_pm_sleep_release(PM_RTC_ID, PM_SLEEP_MODE_NONE);
     }

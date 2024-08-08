@@ -44,27 +44,25 @@ void heart_timer_callback(void *parameter)
 
 void Start_Heart_Timer(void)
 {
-    LOG_D("Start Heart_retry timer\r\n");
-    rt_lptimer_start(&heart_timer);
-}
-
-void Stop_Heart_Timer(void)
-{
-    LOG_D("Stop_Heart_Timer\r\n");
-    rt_lptimer_stop(&heart_timer);
-}
-
-void period_heart_start(void)
-{
     uint32_t ramdom_sec = random_second_get(30,270) * 1000;
     rt_lptimer_control(&heart_timer, RT_TIMER_CTRL_SET_TIME, &ramdom_sec);
     rt_lptimer_start(&heart_timer);
 }
 
-void once_heart_timer_callback(void *parameter)
+void Stop_Heart_Timer(void)
+{
+    rt_lptimer_stop(&heart_timer);
+}
+
+void heart_period_start(void)
 {
     heart_count = 0;
     RF_HeartWithMain();
+}
+
+void once_heart_timer_callback(void *parameter)
+{
+    heart_period_start();
 }
 
 void rng_hw_init(void)
@@ -89,6 +87,6 @@ void heart_init(void)
 {
     rng_hw_init();
     rt_lptimer_init(&heart_timer, "heart_timer", heart_timer_callback, RT_NULL,5*60*1000, RT_TIMER_FLAG_ONE_SHOT | RT_TIMER_FLAG_SOFT_TIMER);
-    rt_lptimer_init(&once_heart_timer, "once_heart_timer", once_heart_timer_callback, RT_NULL,30*1000, RT_TIMER_FLAG_ONE_SHOT | RT_TIMER_FLAG_SOFT_TIMER);
+    rt_lptimer_init(&once_heart_timer, "once_heart_timer", once_heart_timer_callback, RT_NULL,60*1000, RT_TIMER_FLAG_ONE_SHOT | RT_TIMER_FLAG_SOFT_TIMER);
     rt_lptimer_start(&once_heart_timer);
 }
