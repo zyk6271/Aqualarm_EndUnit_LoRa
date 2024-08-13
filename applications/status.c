@@ -149,7 +149,7 @@ void warn_water_timer_callback(void *parameter)
 }
 void Start_Warn_Water_Timer(void)
 {
-    if(warn_water_count++ < 5)
+    if(warn_water_count++ < 10)
     {
         LOG_D("Start_Warn_Water_Timer\r\n");
         rt_lptimer_start(&warn_water_timer);
@@ -185,7 +185,7 @@ void LowPowerEvent_Callback(void *parameter)
 void UltraLowPowerEvent_Callback(void *parameter)
 {
     Warning_Status = UltraLowPower;
-    Led_Alarm_Enable(1,15);
+    Led_Alarm_Enable(1,30);
     RF_HeartWithMain();
     LOG_I("UltraLowPowerEvent_Callback\r\n");
 }

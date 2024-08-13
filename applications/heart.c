@@ -44,7 +44,7 @@ void heart_timer_callback(void *parameter)
 
 void Start_Heart_Timer(void)
 {
-    uint32_t ramdom_sec = random_second_get(30,270) * 1000;
+    uint32_t ramdom_sec = random_second_get(30,300) * 1000;
     rt_lptimer_control(&heart_timer, RT_TIMER_CTRL_SET_TIME, &ramdom_sec);
     rt_lptimer_start(&heart_timer);
 }

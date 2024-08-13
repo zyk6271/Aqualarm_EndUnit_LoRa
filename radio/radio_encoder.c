@@ -67,6 +67,7 @@ void rf_after_send_callback(uint8_t parameter)
     {
     case 1:
         PVD_Close();
+        rt_thread_mdelay(1000);
         break;
     default:
         break;
@@ -119,7 +120,7 @@ void rf_encode_entry(void *paramaeter)
     while (1)
     {
         rt_mq_recv(rf_en_mq,(void*)&msg_ptr, sizeof(struct send_msg), RT_WAITING_FOREVER);
-        rt_pm_module_delay_sleep(PM_RF_ID, 3000);
+        rt_pm_module_delay_sleep(PM_RF_ID, 5000);
         rf_before_send_callback(msg_ptr.parameter);
         rf_send_with_lbt(msg_ptr.parameter, msg_ptr.data_ptr, msg_ptr.data_size);
         rf_after_send_callback(msg_ptr.parameter);

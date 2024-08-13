@@ -55,7 +55,7 @@ static void radio_frame_mainunit_parse_valve(rx_format *rx_frame)
 {
     uint8_t value = rx_frame->rx_data[2];
 
-    if(rx_frame->rssi >= -100 && rx_frame->snr >= 0)
+    if(rx_frame->rssi >= -100 && rx_frame->snr >= -6)
     {
         Beep_Recv();
     }
