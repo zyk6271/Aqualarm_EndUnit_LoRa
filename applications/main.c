@@ -23,15 +23,16 @@ int main(void)
 {
     LOG_I("System Version is %s\r\n",MCU_VER);
     StorageInit();
-    radio_init();
-    heart_init();
-    PVD_Init();
-    RTC_Init();
-    WarningInit();
     Led_Init();
-    Button_Init();
-    WaterScan_Init();
-    Low_Init();
+    radio_init();
+//    heart_init();
+//    PVD_Init();
+//    RTC_Init();
+//    WarningInit();
+
+//    Button_Init();
+//    WaterScan_Init();
+//    Low_Init();
     while (1)
     {
         rt_thread_mdelay(1000);

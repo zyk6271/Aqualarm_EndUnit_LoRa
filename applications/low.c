@@ -156,5 +156,5 @@ void Low_Init(void)
 {
     rt_pm_notify_set(low_power_notify, RT_NULL);
     rt_pm_request(PM_SLEEP_MODE_DEEP);
-    rt_pm_release(PM_SLEEP_MODE_NONE);
+    //rt_pm_release(PM_SLEEP_MODE_NONE);
 }

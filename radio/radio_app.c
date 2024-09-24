@@ -14,7 +14,7 @@
 #include "radio_encoder.h"
 
 #define DBG_TAG "RADIO_APP"
-#define DBG_LVL DBG_INFO
+#define DBG_LVL DBG_LOG
 #include <rtdbg.h>
 
 RadioEvents_t RadioEvents;
@@ -35,7 +35,8 @@ static void OnTxDone(void)
 {
     LOG_D("TxDone\r\n");
     radio_recv_start();
-    rf_txdone_callback();
+    bqb_test();
+//    rf_txdone_callback();
 }
 
 void RF_Send(char *payload,int size)
@@ -49,7 +50,7 @@ void RF_Send(char *payload,int size)
 
 static void OnRxDone(uint8_t *src_payload, uint16_t size, int16_t rssi, int8_t snr)
 {
-    radio_protocol_parse(rssi,snr,src_payload,size);
+    //radio_protocol_parse(rssi,snr,src_payload,size);
 }
 
 static void OnTxTimeout(void)
@@ -76,6 +77,13 @@ static void OnCadDone(bool channelActivityDetected)
     radio_cad_detected(channelActivityDetected);
 }
 
+void bqb_test(void)
+{
+    uint8_t buff[] = {"sentient"};
+    RF_Send(buff, 8);
+    Led_KeyOff();
+}
+
 void radio_init(void)
 {
     RadioCRC_Init();
@@ -100,4 +108,6 @@ void radio_init(void)
                                    0, true, 0, 0, LORA_IQ_INVERSION_ON_DISABLE, true );
     Radio.SetMaxPayloadLength(MODEM_LORA, 255);
     Radio.Rx(0);
+
+    bqb_test();
 }
