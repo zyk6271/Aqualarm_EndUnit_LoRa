@@ -17,7 +17,7 @@
 #define DBG_LVL DBG_LOG
 #include <rtdbg.h>
 
-#define MCU_VER     "1.0.6"
+#define MCU_VER     "1.0.7"
 
 int main(void)
 {

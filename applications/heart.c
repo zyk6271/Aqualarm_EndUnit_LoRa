@@ -21,6 +21,9 @@ static uint8_t heart_count;
 struct rt_lptimer heart_timer;
 struct rt_lptimer once_heart_timer;
 
+uint32_t heart_before_time = 0;
+uint32_t heart_after_time = 0;
+
 uint32_t random_second_get(uint32_t min,uint32_t max)
 {
     uint32_t value, second = 0;
@@ -44,7 +47,10 @@ void heart_timer_callback(void *parameter)
 
 void Start_Heart_Timer(void)
 {
-    uint32_t ramdom_sec = random_second_get(30,300) * 1000;
+    uint32_t ramdom_sec = 0;
+    heart_before_time = random_second_get(300,6900);
+    ramdom_sec = (heart_before_time + heart_after_time) * 1000;
+    heart_after_time = 7200 - heart_before_time;
     rt_lptimer_control(&heart_timer, RT_TIMER_CTRL_SET_TIME, &ramdom_sec);
     rt_lptimer_start(&heart_timer);
 }
