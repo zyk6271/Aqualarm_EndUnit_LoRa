@@ -12,15 +12,8 @@
 /*
  * RF
  */
-#define RF_SW1_PIN                      6
-#define RF_SW2_PIN                      7
-#define TCXO_PWR_PIN                    16
-/*
- * STORAGE
- */
-#define EEPROM_VCC_PIN                  21
-#define EEPROM_SCL_PIN                  22
-#define EEPROM_SDA_PIN                  23
+#define RF_SW1_PIN                      0
+#define RF_SW2_PIN                      1
 /*
  * WATER
  */

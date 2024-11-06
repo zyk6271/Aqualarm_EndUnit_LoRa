@@ -124,9 +124,6 @@ void MSI_Clock_Config(void)
 }
 void clk_init(char *clk_source, int source_freq, int target_freq)
 {
-    /*
-     * Use SystemClock_Config generated from STM32CubeMX for clock init
-     * system_clock_config(target_freq);
-     */
-    TCXO_Clock_Config();
+    extern void SystemClock_Config(void);
+    SystemClock_Config();
 }
