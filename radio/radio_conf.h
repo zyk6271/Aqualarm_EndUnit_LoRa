@@ -33,8 +33,8 @@ extern "C" {
   */
 #define XTAL_DEFAULT_CAP_VALUE                  ( 0x20UL )
 
-#define XTA_DEFAULT_CAP_VALUE                  ( 0x06UL )
-#define XTB_DEFAULT_CAP_VALUE                  ( 0x08UL )
+#define XOSC_XTA_CAP_VALUE                      ( 0x0AUL )
+#define XOSC_XTB_CAP_VALUE                      ( 0x0AUL )
 
 /**
   * @brief voltage of vdd tcxo.
