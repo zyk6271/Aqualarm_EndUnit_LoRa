@@ -12,8 +12,8 @@
 /*
  * RF
  */
-#define RF_SW1_PIN                      0
-#define RF_SW2_PIN                      1
+#define RF_SW1_PIN                      6
+#define RF_SW2_PIN                      7
 /*
  * WATER
  */
