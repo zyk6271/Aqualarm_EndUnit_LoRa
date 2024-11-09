@@ -25,8 +25,8 @@ int32_t RBI_ConfigRFSwitch(RBI_Switch_TypeDef Config)
     case RBI_SWITCH_RX:
     {
         /*Turns On in Rx Mode the RF Switch */
-        rt_pin_write(RF_SW1_PIN,PIN_HIGH);
-        rt_pin_write(RF_SW2_PIN,PIN_LOW);
+        rt_pin_write(RF_SW1_PIN,PIN_LOW);
+        rt_pin_write(RF_SW2_PIN,PIN_HIGH);
         break;
     }
     case RBI_SWITCH_RFO_LP:
