@@ -52,10 +52,13 @@ typedef struct
 #define DEVICE_TYPE_ALLINONE          0x03
 #define DEVICE_TYPE_DOORUNIT          0x04
 #define DEVICE_TYPE_PWRSTOP           0x05
+#define DEVICE_TYPE_MOTION_SENSOR     0x06
+#define DEVICE_TYPE_FACTORY_TOOL      0x0E
+#define DEVICE_TYPE_EXTENDED_DEVICES  0x0F
 
-#define NETID_TEST_ENV                0x01
-#define NETID_CHN_ENV                 0x02
-#define NETID_EUR_ENV                 0x03
-#define NETID_USA_ENV                 0x04
+#define NETID_REGION_NORWAY           0x01
+#define NETID_REGION_SWEDEN           0x02
+
+#define NET_REGION_SELECT             NETID_REGION_NORWAY
 
 #endif /* RADIO_PROTOCOL_RADIO_PROTOCOL_H_ */
