@@ -62,6 +62,6 @@ typedef struct
 #define NETID_REGION_SWEDEN           0x02
 #define NETID_REGION_HONGKONG         0x03
 
-#define NET_REGION_SELECT             NETID_REGION_HONGKONG
+#define NET_REGION_SELECT             NETID_REGION_NORWAY
 
 #endif /* RADIO_PROTOCOL_RADIO_PROTOCOL_H_ */
