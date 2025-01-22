@@ -127,7 +127,7 @@ void rf_encode_entry(void *paramaeter)
     }
 }
 
-void RadioQueue_Init(void)
+void radio_encode_queue_init(void)
 {
     int *p;
     p=(int *)(0x0803FFF0);//这就是已知的地址，要强制类型转换
